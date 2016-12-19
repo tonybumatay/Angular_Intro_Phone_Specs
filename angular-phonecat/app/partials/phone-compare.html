@@ -1,0 +1,500 @@
+<div class="row">
+<div class="col-sm-6">
+  <div class="phone-images">
+    <img ng-src="{{img}}"
+         class="phone"
+         ng-repeat="img in phone1.images"
+         ng-class="{active: mainImageUrl==img}">
+  </div>
+
+  <h1>{{phone1.name}}</h1>
+
+  <p>{{phone1.description}}</p>
+
+  <ul class="phone-thumbs">
+    <li ng-repeat="img in phone1.images">
+      <img ng-src="{{img}}" ng-click="setImage(img)">
+    </li>
+  </ul>
+</div>
+
+<div class="col-sm-6">
+  <div class="phone-images">
+    <img ng-src="{{img}}"
+         class="phone"
+         ng-repeat="img in phone2.images"
+         ng-class="{active: mainImageUrl==img}">
+  </div>
+
+
+<h1>{{phone2.name}}</h1>
+
+<p>{{phone2.description}}</p>
+
+<ul class="phone-thumbs">
+  <li ng-repeat="img in phone2.images">
+    <img ng-src="{{img}}" ng-click="setImage(img)">
+  </li>
+</ul>
+</div>
+<!--END Header stuff-->
+
+
+<div class="row">
+
+  <div class="col-sm-8 col-sm-offset-2">
+  <h2>Compare Features</h2>
+    <table>
+      <tr>
+        <th></th>
+        <th> {{phone1.name}}</th>
+        <th> {{phone2.name}}</th>
+      </tr>
+      <tr>
+        <td> Availability and Networks</td>
+        <td ng-repeat="availability in phone1.availability">{{availability | notAvail}}</td>
+        <td ng-repeat="availability in phone2.availability">{{availability | notAvail}}</td>
+      </tr>
+      <tr>
+        <td>Battery </td>
+        <td> 
+          <li>
+            <dl>
+              <dt>Type</dt>
+              <dd>{{phone1.battery.type | notAvail}}</dd>
+              <dt>Talk Time</dt>
+              <dd>{{phone1.battery.talkTime | notAvail}}</dd>
+              <dt>Standby time (max)</dt>
+              <dd>{{phone1.battery.standbyTime | notAvail}}</dd>
+            </dl>
+          </li>
+        </td>
+        <td> 
+          <li>
+              <dl>
+                <dt>Type</dt>
+                <dd>{{phone2.battery.type | notAvail}}</dd>
+                <dt>Talk Time</dt>
+                <dd>{{phone2.battery.talkTime | notAvail}}</dd>
+                <dt>Standby time (max)</dt>
+                <dd>{{phone2.battery.standbyTime | notAvail}}</dd>
+              </dl>
+            </li>
+        </td>
+       </tr> 
+      <tr>
+        <td>Storage and Memory</td>
+        <td>
+          <li>
+            <dl>
+              <dt>RAM</dt>
+              <dd>{{phone1.storage.ram | notAvail}}</dd>
+              <dt>Internal Storage</dt>
+              <dd>{{phone1.storage.flash | notAvail}}</dd>
+            </dl>
+          </li>
+        </td>
+        <td>
+           <li>
+            <dl>
+              <dt>RAM</dt>
+              <dd>{{phone2.storage.ram | notAvail}}</dd>
+              <dt>Internal Storage</dt>
+              <dd>{{phone2.storage.flash | notAvail}}</dd>
+            </dl>
+          </li>
+        </td>
+      </tr>
+       
+       <tr>
+          <td>Connectivity</td>
+          <td>
+            <li>
+              <dl>
+                <dt>Network Support</dt>
+                <dd>{{phone1.connectivity.cell | notAvail}}</dd>
+                <dt>WiFi</dt>
+                <dd>{{phone1.connectivity.wifi | notAvail}}</dd>
+                <dt>Bluetooth</dt>
+                <dd>{{phone1.connectivity.bluetooth | notAvail}}</dd>
+                <dt>Infrared</dt>
+                <dd>{{phone1.connectivity.infrared | checkmark | notAvail}}</dd>
+                <dt>GPS</dt>
+                <dd>{{phone1.connectivity.gps | checkmark | notAvail}}</dd>
+              </dl>
+            </li>
+          </td>
+          <td>
+            <li>
+              <dl>
+                <dt>Network Support</dt>
+                <dd>{{phone2.connectivity.cell | notAvail}}</dd>
+                <dt>WiFi</dt>
+                <dd>{{phone2.connectivity.wifi | notAvail}}</dd>
+                <dt>Bluetooth</dt>
+                <dd>{{phone2.connectivity.bluetooth | notAvail}}</dd>
+                <dt>Infrared</dt>
+                <dd>{{phone2.connectivity.infrared | checkmark | notAvail}}</dd>
+                <dt>GPS</dt>
+                <dd>{{phone2.connectivity.gps | checkmark | notAvail}}</dd>
+              </dl>
+            </li>
+          </td>
+        </tr> 
+
+        <tr>
+          <td>Android</td>
+          <td>
+            <li>
+              <dl>
+                <dt>OS Version</dt>
+                <dd>{{phone1.android.os | notAvail}}</dd>
+                <dt>UI</dt>
+                <dd>{{phone1.android.ui | notAvail}}</dd>
+              </dl>
+            </li>
+          </td>
+          <td>
+            <li>
+              <dl>
+                <dt>OS Version</dt>
+                <dd>{{phone2.android.os | notAvail}}</dd>
+                <dt>UI</dt>
+                <dd>{{phone2.android.ui | notAvail}}</dd>
+              </dl>
+            </li>
+          </td>
+        </tr> 
+
+        <tr>
+          <td>Size and Weight</td>
+          <td>
+            <li>
+              <dl>
+                <dt>Dimensions</dt>
+                <dd ng-repeat="dim in phone1.sizeAndWeight.dimensions">{{dim | notAvail}}</dd>
+                <dt>Weight</dt>
+                <dd>{{phone1.sizeAndWeight.weight | notAvail}}</dd>
+              </dl>
+            </li>
+          </td>
+          <td>
+            <li>
+              <dl>
+                <dt>Dimensions</dt>
+                <dd ng-repeat="dim in phone2.sizeAndWeight.dimensions">{{dim | notAvail}}</dd>
+                <dt>Weight</dt>
+                <dd>{{phone2.sizeAndWeight.weight | notAvail}}</dd>
+              </dl>
+            </li>
+          </td>
+        </tr> 
+      
+        <tr>
+          <td>Display</td>
+          <td>
+            <li>
+              <dl>
+                <dt>Screen size</dt>
+                <dd>{{phone1.display.screenSize | notAvail}}</dd>
+                <dt>Screen resolution</dt>
+                <dd>{{phone1.display.screenResolution | notAvail}}</dd>
+                <dt>Touch screen</dt>
+                <dd>{{phone1.display.touchScreen | checkmark | notAvail}}</dd>
+              </dl>
+            </li>
+          </td>
+          <td>
+            <li>
+              <dl>
+                <dt>Screen size</dt>
+                <dd>{{phone2.display.screenSize | notAvail}}</dd>
+                <dt>Screen resolution</dt>
+                <dd>{{phone2.display.screenResolution | notAvail}}</dd>
+                <dt>Touch screen</dt>
+                <dd>{{phone2.display.touchScreen | checkmark | notAvail}}</dd>
+              </dl>
+            </li>
+          </td>
+        </tr> 
+        <tr>
+          <td>Hardware</td>
+          <td>
+            <li>
+              <dl>
+                <dt>CPU</dt>
+                <dd>{{phone1.hardware.cpu | notAvail}}</dd>
+                <dt>USB</dt>
+                <dd>{{phone1.hardware.usb | notAvail}}</dd>
+                <dt>Audio / headphone jack</dt>
+                <dd>{{phone1.hardware.audioJack | notAvail}}</dd>
+                <dt>FM Radio</dt>
+                <dd>{{phone1.hardware.fmRadio | checkmark | notAvail}}</dd>
+                <dt>Accelerometer</dt>
+                <dd>{{phone1.hardware.accelerometer | checkmark | notAvail}}</dd>
+              </dl>
+            </li>
+          </td>
+          <td>
+            <li>
+              <dl>
+                <dt>CPU</dt>
+                <dd>{{phone2.hardware.cpu | notAvail}}</dd>
+                <dt>USB</dt>
+                <dd>{{phone2.hardware.usb | notAvail}}</dd>
+                <dt>Audio / headphone jack</dt>
+                <dd>{{phone2.hardware.audioJack | notAvail}}</dd>
+                <dt>FM Radio</dt>
+                <dd>{{phone2.hardware.fmRadio | checkmark | notAvail}}</dd>
+                <dt>Accelerometer</dt>
+                <dd>{{phone2.hardware.accelerometer | checkmark | notAvail}}</dd>
+              </dl>
+            </li>
+          </td>
+        </tr> 
+        <tr>
+          <td>Camera</td>
+          <td>
+            <li>
+              <dl>
+                <dt>Primary</dt>
+                <dd>{{phone1.camera.primary | notAvail}}</dd>
+                <dt>Features</dt>
+                <dd>{{phone1.camera.features.join(', ') | notAvail}}</dd>
+              </dl>
+            </li>
+          </td>
+          <td>
+            <li>
+              <dl>
+                <dt>Primary</dt>
+                <dd>{{phone2.camera.primary | notAvail}}</dd>
+                <dt>Features</dt>
+                <dd>{{phone2.camera.features.join(', ') | notAvail}}</dd>
+              </dl>
+            </li>
+          </td>
+        </tr> 
+        <tr>
+          <td>Additional Features</td>
+          <td>
+            <li>
+              <dd>{{phone1.additionalFeatures | notAvail}}</dd>
+            </li> 
+          </td>
+          <td>
+            <li>
+              <dd>{{phone2.additionalFeatures | notAvail}}</dd>
+            </li> 
+          </td>
+        </tr> 
+    </table>
+  </div>
+</div>
+<!-- <ul class="specs"> -->
+  <!-- <li>
+    <span>Availability and Networks</span>
+    <dl>
+      <dt>Availability</dt>
+      <dd ng-repeat="availability in phone1.availability">{{availability}}</dd>
+    </dl>
+  </li> -->
+  <!-- <li>
+    <span>Battery</span>
+    <dl>
+      <dt>Type</dt>
+      <dd>{{phone1.battery.type}}</dd>
+      <dt>Talk Time</dt>
+      <dd>{{phone1.battery.talkTime}}</dd>
+      <dt>Standby time (max)</dt>
+      <dd>{{phone1.battery.standbyTime}}</dd>
+    </dl>
+  </li> -->
+ <!--  <li>
+    <span>Storage and Memory</span>
+    <dl>
+      <dt>RAM</dt>
+      <dd>{{phone1.storage.ram}}</dd>
+      <dt>Internal Storage</dt>
+      <dd>{{phone1.storage.flash}}</dd>
+    </dl>
+  </li> -->
+  <!-- <li>
+    <span>Connectivity</span>
+    <dl>
+      <dt>Network Support</dt>
+      <dd>{{phone1.connectivity.cell}}</dd>
+      <dt>WiFi</dt>
+      <dd>{{phone1.connectivity.wifi}}</dd>
+      <dt>Bluetooth</dt>
+      <dd>{{phone1.connectivity.bluetooth}}</dd>
+      <dt>Infrared</dt>
+      <dd>{{phone1.connectivity.infrared | checkmark}}</dd>
+      <dt>GPS</dt>
+      <dd>{{phone1.connectivity.gps | checkmark}}</dd>
+    </dl>
+  </li> -->
+<!--   <li>
+    <span>Android</span>
+    <dl>
+      <dt>OS Version</dt>
+      <dd>{{phone1.android.os}}</dd>
+      <dt>UI</dt>
+      <dd>{{phone1.android.ui}}</dd>
+    </dl>
+  </li> -->
+  <!-- <li>
+    <span>Size and Weight</span>
+    <dl>
+      <dt>Dimensions</dt>
+      <dd ng-repeat="dim in phone1.sizeAndWeight.dimensions">{{dim}}</dd>
+      <dt>Weight</dt>
+      <dd>{{phone1.sizeAndWeight.weight}}</dd>
+    </dl>
+  </li> -->
+  <!-- <li>
+    <span>Display</span>
+    <dl>
+      <dt>Screen size</dt>
+      <dd>{{phone1.display.screenSize}}</dd>
+      <dt>Screen resolution</dt>
+      <dd>{{phone1.display.screenResolution}}</dd>
+      <dt>Touch screen</dt>
+      <dd>{{phone1.display.touchScreen | checkmark}}</dd>
+    </dl>
+  </li> -->
+ <!--  <li>
+    <span>Hardware</span>
+    <dl>
+      <dt>CPU</dt>
+      <dd>{{phone1.hardware.cpu}}</dd>
+      <dt>USB</dt>
+      <dd>{{phone1.hardware.usb}}</dd>
+      <dt>Audio / headphone jack</dt>
+      <dd>{{phone1.hardware.audioJack}}</dd>
+      <dt>FM Radio</dt>
+      <dd>{{phone1.hardware.fmRadio | checkmark}}</dd>
+      <dt>Accelerometer</dt>
+      <dd>{{phone1.hardware.accelerometer | checkmark}}</dd>
+    </dl>
+  </li> -->
+ <!--  <li>
+    <span>Camera</span>
+    <dl>
+      <dt>Primary</dt>
+      <dd>{{phone1.camera.primary}}</dd>
+      <dt>Features</dt>
+      <dd>{{phone1.camera.features.join(', ')}}</dd>
+    </dl>
+  </li> -->
+ <!--  <li>
+    <span>Additional Features</span>
+    <dd>{{phone1.additionalFeatures}}</dd>
+  </li>
+</ul> -->
+
+
+
+<!-- <ul class="specs">
+  <li>
+    <span>Availability and Networks</span>
+    <dl>
+      <dt>Availability</dt>
+      <dd ng-repeat="availability in phone2.availability">{{availability}}</dd>
+    </dl>
+  </li>
+  <li>
+    <span>Battery</span>
+    <dl>
+      <dt>Type</dt>
+      <dd>{{phone2.battery.type}}</dd>
+      <dt>Talk Time</dt>
+      <dd>{{phone2.battery.talkTime}}</dd>
+      <dt>Standby time (max)</dt>
+      <dd>{{phone2.battery.standbyTime}}</dd>
+    </dl>
+  </li>
+  <li>
+    <span>Storage and Memory</span>
+    <dl>
+      <dt>RAM</dt>
+      <dd>{{phone2.storage.ram}}</dd>
+      <dt>Internal Storage</dt>
+      <dd>{{phone2.storage.flash}}</dd>
+    </dl>
+  </li>
+  <li>
+    <span>Connectivity</span>
+    <dl>
+      <dt>Network Support</dt>
+      <dd>{{phone2.connectivity.cell}}</dd>
+      <dt>WiFi</dt>
+      <dd>{{phone2.connectivity.wifi}}</dd>
+      <dt>Bluetooth</dt>
+      <dd>{{phone2.connectivity.bluetooth}}</dd>
+      <dt>Infrared</dt>
+      <dd>{{phone2.connectivity.infrared | checkmark}}</dd>
+      <dt>GPS</dt>
+      <dd>{{phone2.connectivity.gps | checkmark}}</dd>
+    </dl>
+  </li>
+  <li>
+    <span>Android</span>
+    <dl>
+      <dt>OS Version</dt>
+      <dd>{{phone2.android.os}}</dd>
+      <dt>UI</dt>
+      <dd>{{phone2.android.ui}}</dd>
+    </dl>
+  </li>
+  <li>
+    <span>Size and Weight</span>
+    <dl>
+      <dt>Dimensions</dt>
+      <dd ng-repeat="dim in phone2.sizeAndWeight.dimensions">{{dim}}</dd>
+      <dt>Weight</dt>
+      <dd>{{phone2.sizeAndWeight.weight}}</dd>
+    </dl>
+  </li>
+  <li>
+    <span>Display</span>
+    <dl>
+      <dt>Screen size</dt>
+      <dd>{{phone2.display.screenSize}}</dd>
+      <dt>Screen resolution</dt>
+      <dd>{{phone2.display.screenResolution}}</dd>
+      <dt>Touch screen</dt>
+      <dd>{{phone2.display.touchScreen | checkmark}}</dd>
+    </dl>
+  </li>
+  <li>
+    <span>Hardware</span>
+    <dl>
+      <dt>CPU</dt>
+      <dd>{{phone2.hardware.cpu}}</dd>
+      <dt>USB</dt>
+      <dd>{{phone2.hardware.usb}}</dd>
+      <dt>Audio / headphone jack</dt>
+      <dd>{{phone2.hardware.audioJack}}</dd>
+      <dt>FM Radio</dt>
+      <dd>{{phone2.hardware.fmRadio | checkmark}}</dd>
+      <dt>Accelerometer</dt>
+      <dd>{{phone2.hardware.accelerometer | checkmark}}</dd>
+    </dl>
+  </li>
+  <li>
+    <span>Camera</span>
+    <dl>
+      <dt>Primary</dt>
+      <dd>{{phone2.camera.primary}}</dd>
+      <dt>Features</dt>
+      <dd>{{phone2.camera.features.join(', ')}}</dd>
+    </dl>
+  </li>
+  <li>
+    <span>Additional Features</span>
+    <dd>{{phone2.additionalFeatures}}</dd>
+  </li>
+</ul>
+
+ -->

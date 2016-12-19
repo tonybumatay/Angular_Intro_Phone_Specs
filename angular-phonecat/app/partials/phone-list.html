@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+      Search: <input ng-model="query">
+      Sort by:
+      <select ng-model="orderProp">
+        <option value="name">Alphabetical</option>
+        <option value="age">Newest</option>
+        <option value="storage">Storage</option>
+        <option value="standBy">Standby Time</option>
+        <option value="talk">Talk Time</option>
+        <option value="weight">Weight</option>
+      </select>
+      Phone One:<select id = "select1">
+        <option ng-repeat="phone in phones" value="{{phone.id}}">{{phone.name}}</option>
+      </select>
+      Phone Two:<select id = "select2">
+        <option ng-repeat="phone in phones" value="{{phone.id}}">{{phone.name}}</option>
+      </select>
+      <a id = "hrefA" href="">Compare</a>
+      <script>
+      function compare(){
+        var select1 = document.getElementById("select1");
+        var select1Value = select1.options[select1.selectedIndex].value;
+        var select2 = document.getElementById("select2");
+        var select2Value = select2.options[select2.selectedIndex].value;
+        document.getElementById("hrefA").href = "#/phones/" + select1Value + "/compare/" + select2Value;
+      }
+        document.getElementById("hrefA").addEventListener("click", compare, false);
+      </script>
+      
+    </div>
+    <div class="col-sm-9 col-sm-offset-1">
+      <!--Body content-->
+      <ul class="phones">
+        <li ng-repeat="phone in phones | filter:query | orderBy:orderProp"
+            class="thumbnail phone-listing">
+          <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
+          <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+          <p>{{phone.snippet}}</p>
+          <p class="idk">Storage: {{phone.storage}}</p>
+          <p class="idk">Stand-By Time: {{phone.standBy}}</p>
+          <p class="idk">Talk Time: {{phone.talk}}</p>
+          <p class="idk">Weight: {{phone.weight}}</p>
+          <!-- <ul>
+            <li>Storage: {{phone.storage}}</li>
+            <li>Stand-By Time: {{phone.standBy}}</li>
+            <li>Talk Time: {{phone.talk}}</li>
+            <li>Weight: {{phone.weight}}</li>
+          </ul> -->
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
